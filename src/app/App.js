@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { selectItem, toggleItem, filterList } from '../actions'
+import { toggleItem, filterList } from '../actions'
 import NamesList from '../components/NamesList'
 import { Header } from '../components/Header'
 import SelectedNames from '../components/SelectedNames'
@@ -58,7 +58,6 @@ export class App extends Component {
 
 export function mapDispatchToProps(dispatch) {
   return {
-    onSelectItem: (isChecked, item) => dispatch(selectItem(isChecked, item)),
     onToggleItem: (isChecked, val, index) => dispatch(toggleItem(isChecked, val, index)),
     onFilterList: text => dispatch(filterList(text)),
   };
@@ -67,14 +66,11 @@ export function mapDispatchToProps(dispatch) {
 export const mapStateToProps = (state) => {
   return {
     selected: state.app.selected,
-    selectedList: state.app.selectedList,
     name: state.app.name,
     namesList: state.app.namesList,
     filteredList: state.app.filteredList,
-    isChecked: state.app.isChecked
   }
 }
-
 
 const withConnect = connect(
   mapStateToProps,

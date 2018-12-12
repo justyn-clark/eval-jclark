@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Item2 from '../components/Item2'
+import SelectedItem from '../components/SelectedItem'
 
 export default class SelectedNames extends Component {
   componentDidMount () {}
@@ -15,7 +15,7 @@ export default class SelectedNames extends Component {
         <h3>Selected Names:</h3>
         <div>
           {this.props.selected.map((name, key) =>
-            <Item2 key={key}>{name}</Item2>
+            <SelectedItem key={key}>{name}</SelectedItem>
           )}
         </div>
       </div>

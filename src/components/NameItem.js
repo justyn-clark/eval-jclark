@@ -2,7 +2,7 @@ import React from 'react';
 import LI from '../components/LI'
 import Checkbox from '../components/Checkbox'
 
-const Item = ({id, props, name, checked, onChange}) => {
+const NameItem = ({id, props, name, checked, onChange}) => {
   return (
     <LI>
       <Checkbox
@@ -20,6 +20,6 @@ const Item = ({id, props, name, checked, onChange}) => {
   )
 }
 
-export default Item
+export default NameItem
 
 

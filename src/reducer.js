@@ -1,6 +1,5 @@
 import {
   FILTER_LIST,
-  SELECT_ITEM,
   TOGGLE_ITEM,
 } from './constants'
 
@@ -40,8 +39,6 @@ const initialState = {
     "Yasmin"
   ],
   selected: [],
-  selectedList: [],
-  name: null,
   filteredList: [
     "Yasujiro",
     "F.W.",
@@ -76,35 +73,28 @@ const initialState = {
     "Alfonse",
     "Yasmin"
   ],
-  isChecked: null
 }
 
 function appReducer(state = initialState, action) {
   switch (action.type) {
-    case SELECT_ITEM:
-      return {
-        ...state,
-        name: action.item,
-        selectedList: [...state.selected],
-        isChecked: action.isChecked
-      }
     case FILTER_LIST:
       return {
         ...state,
         filteredList: action.list
       }
     case TOGGLE_ITEM:
-    if (state.selected[action.index] &&  !action.isChecked) {
+      if (state.selected.indexOf(action.val) === -1) {
         return {
           ...state,
-          selected: [...state.selected.slice(0, action.index)],
-        };
+          selected: [...state.selected, action.val],
+        }
+
+      } else if (state.selected.indexOf(action.val) > -1) {
+        return {
+          ...state,
+          selected: state.selected.filter(item => item !== action.val),
+        }
       }
-      return {
-        ...state,
-        selected: [...state.selected.filter(item => item !== action.val), action.val],
-        index: action.index,
-      };
     default:
       return state
   }

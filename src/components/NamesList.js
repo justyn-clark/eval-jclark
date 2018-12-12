@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Item from './Item'
+import NameItem from './NameItem'
 
 export default class NamesList extends Component {
   constructor(props) {
@@ -15,7 +15,6 @@ export default class NamesList extends Component {
     let isChecked = e.target.checked
     this.setState(prevState => ({ checkedItems: prevState.checkedItems.set(value, isChecked) }))
     this.setState({ isChecked: !this.state.isChecked })
-    //this.props.onSelectItem(isChecked, item)
   }
 
   render () {
@@ -24,7 +23,7 @@ export default class NamesList extends Component {
         <h3>Names:</h3>
         <ul>
           {this.props.filteredList.map((name, key) =>
-            <Item
+            <NameItem
               key={key}
               id={key}
               name={name}
