@@ -60,7 +60,7 @@ export function mapDispatchToProps(dispatch) {
   return {
     onToggleItem: (isChecked, val, index) => dispatch(toggleItem(isChecked, val, index)),
     onFilterList: text => dispatch(filterList(text)),
-  };
+  }
 }
 
 export const mapStateToProps = (state) => {
